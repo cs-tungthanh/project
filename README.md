@@ -1,5 +1,4 @@
 # project
 Pet Project
 
-## Setting eslint:
-- https://hackmd.io/@tungthanh/H1gbJ9qR_
+1. [Setting Eslint](https://hackmd.io/@tungthanh/H1gbJ9qR_)
