@@ -19,11 +19,11 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js',
+        filename: 'index.js',
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '..', './webpack/src/index.html')
+            template: path.resolve(__dirname, 'public/index.html')
         })
     ]
 }
