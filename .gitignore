@@ -2,6 +2,7 @@
 /coverage
 
 /backend
+/electron-app
 
 # production
 /build
