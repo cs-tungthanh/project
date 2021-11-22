@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" class="textBox" placeholder="Enter task here">
+        <button id="addTask" class="fa fa-plus"> </button>
+        <div class="notCompleted">
+            <h3>To Do:</h3>
+        </div>
+        <div class="completed">
+            <h3>Done:</h3>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("div").on("click", "#delete", function () {
+                var taskToDelete = $(this).parent()
+                taskToDelete.remove()
+            });
+
+            $("div").on("click", "#done", function () {
+                var taskElement = $(this).parent()
+                $(this).remove()
+                var detachedTask = taskElement.detach()
+                $(".completed").append(detachedTask)
+            });
+
+            $("#addTask").click(function () { // click event handler
+                var textValue = $(".textBox").val();
+                if (textValue != "") {
+                    var deleteBtnEl = $("<button id='delete'> </button>")
+                        .addClass("fas fa-trash-alt")
+                    var doneBtnEl = $("<button id='done'> </button>")
+                        .addClass("fas fa-check")
+                    var taskEl = $("<div> </div>")
+                        .addClass("task")
+                        .text(textValue)
+                    taskEl.append(deleteBtnEl, doneBtnEl);
+                    $(".notCompleted").append(taskEl)
+                    $(".textBox").val("") // clear out the text box
+                    doneBtnEl.click(function (e) {
+                        taskEl.detach()
+                        $(".completed").append(taskEl)
+                    })
+                } else {
+                    alert("Error: Please enter a task before clicking the 'Add' button.");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
