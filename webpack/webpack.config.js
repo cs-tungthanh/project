@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const production = false;
 
 module.exports = {
@@ -8,10 +9,13 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
+    devServer: {
+        hot: true,
+    },
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
+                test: /\.tsx?$/,∑
                 exclude: /node_modules/,
                 use: "babel-loader",
             },
@@ -22,10 +26,11 @@ module.exports = {
         filename: 'index.js',
     },
     plugins: [
+        !production && new ReactRefreshWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'public/index.html')
         })
-    ],
+    ].filter(Boolean),
     devServer: {
         static: {
             directory: path.resolve(__dirname, 'build')

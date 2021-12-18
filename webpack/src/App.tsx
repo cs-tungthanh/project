@@ -1,9 +1,8 @@
 import React from "react";
 
 const App: React.FC = (props) => {
-    console.log('render211');
-
-    return <div>Webpack sis cool! asasasasasasassA</div>;
+    console.log('render');
+    return <div>Webpack sis csssasdasdool!</div>;
 };
 
 export default App;
